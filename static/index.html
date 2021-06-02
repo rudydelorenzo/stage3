@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stage 3 - Know when we're reopening</title>
+
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q1M4EQECKK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q1M4EQECKK');
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="data main-date">
+        <p>At this rate, we’ll meet the conditions to reopen on</p>
+        <div>
+            <h1 id="main-date">Loading</h1>
+            <h1 id="main-year">...</h1>
+        </div>
+    </div>
+    <div class="data" id="vac-yesterday">
+        <p>New vaccinations yesterday</p>
+        <h3>Loading...</h3>
+    </div>
+    <div class="data" id="1dose-percent">
+        <p>Current percentage with a single dose</p>
+        <h3>Loading...</h3>
+    </div>
+    <div class="data" id="70p-date">
+        <p>Projected date to meet 70%</p>
+        <h3>Loading...</h3>
+    </div>
+    <div class="data" id="70p-eta">
+        <p>Days until 70% have received single dose</p>
+        <h3>Loading...</h3>
+    </div>
+    <div class="data" id="stage3-eta">
+        <p>Days until projected Stage 3 reopening</p>
+        <h3>Loading...</h3>
+    </div>
+    <div class="data" id="2dose-percent">
+        <p>Current percentage with two doses</p>
+        <h3>Loading...</h3>
+    </div>
+</div>
+<div class="copyright-container">
+    <p class="copyright">© RUDY DE LORENZO, 2021</p>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
