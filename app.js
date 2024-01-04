@@ -1,3 +1,14 @@
+/* UPDATE 04-01-2024
+* This webapp was built in 2021, therefore it's now woefully out of date.
+* In order to allow for a demo-only version of this app to be deployed, data fetching has been disabled
+* and therefore the numbers calculated will be meaningless.
+*
+* Regardless, all the original code remains (although commented) so one could follow the logic of the original
+* if they so desired.
+*
+* The returned numbers will be set to placeholders as a showcase of this app's former glory
+* */
+
 const express = require("express");
 const fs = require("fs");
 const https = require("https");
@@ -48,7 +59,10 @@ async function getNewData() {
             break;
         }
     }
-    fs.writeFileSync("data.json", script.innerHTML);
+
+    if (script) {
+        fs.writeFileSync("data.json", script.innerHTML);
+    }
 
     let tables = document.getElementsByTagName("table");
     for (let i = 0; i < tables.length; i++) {
@@ -87,6 +101,7 @@ app.get("/data", (req, res) => {
         let date70Percent = new Date(dateMillis);
         let dateStage3 = new Date(stage3Millis);
 
+        /* Original return statement
         responseData = {
             "single-dose": {
                 "current-percent": current1,
@@ -100,21 +115,37 @@ app.get("/data", (req, res) => {
             "date-stage3": `${monthNames[dateStage3.getMonth()]} ${dateStage3.getDate()}, ${dateStage3.getFullYear()}`,
             "days-till-70p": daysETA70,
             "days-till-stage3": daysETA70 + 14
+        }*/
+
+        const responseData = {
+            "single-dose": {
+                "current-percent": current1,
+                "new-vaccinations": numberWithCommas(newVaccinations1)
+            },
+            "two-doses": {
+                "current-percent": current2,
+                "new-vaccinations": numberWithCommas(newVaccinations2)
+            },
+            "date-70p": `${monthNames[5]} ${17}, ${2021}`,
+            "date-stage3": `${monthNames[6]} ${1}, ${2021}`,
+            "days-till-70p": daysETA70,
+            "days-till-stage3": daysETA70 + 14
         }
 
-        //console.log(responseData);
+        res.setHeader('Content-Type', 'application/json');
+        res.json(responseData);
     }
-    res.setHeader('Content-Type', 'application/json');
-    res.json(responseData);
 })
 
 app.listen(port, () => {
     console.log(`Stage3 Server listening on port ${port}`)
 })
 
-cron.schedule("*/30 * * * *", () => {
-    getNewData();
-});
 
-getNewData();
+/* Fetch data on startup and on a set schedule */
+// cron.schedule("*/30 * * * *", () => {
+//     getNewData();
+// });
+
+// getNewData();
 

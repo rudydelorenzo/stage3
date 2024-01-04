@@ -24,6 +24,8 @@ body {
 
     font-family: Gilroy, sans-serif;
 
+    background-color: #fcfcfc;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,6 +76,8 @@ body {
     font-weight: bold;
     font-size: 8rem;
     margin: 0;
+
+    white-space: nowrap;
 
 
     padding: 0 1rem;
@@ -136,11 +140,18 @@ body {
 .copyright-container {
     position: absolute;
     bottom: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .copyright {
     color: #808080;
     font-size: 0.7rem;
+
+    text-align: center;
 
     letter-spacing: 0.3rem;
 }
