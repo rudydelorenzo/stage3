@@ -1,0 +1,9 @@
+services:
+  app:
+    environment:
+      - ENVIRONMENT=production
+    build: .
+    container_name: stage3_app
+    ports:
+      - "3001:3001"
+    restart: always
